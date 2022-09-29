@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/CustomMatchmakingScene.unity
+    guid: 5fdcfa549c89f6a4cb7270796e91ccf0
+  - enabled: 1
+    path: Assets/Scenes/game.unity
+    guid: c0ee41bcf00b0ae4590536ebd236495c
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/WaitingRoom.unity
     guid: 7556640d8840efe46b76efb12c649f74
-  - enabled: 1
-    path: Assets/Scenes/game.unity
-    guid: c0ee41bcf00b0ae4590536ebd236495c
   m_configObjects: {}
