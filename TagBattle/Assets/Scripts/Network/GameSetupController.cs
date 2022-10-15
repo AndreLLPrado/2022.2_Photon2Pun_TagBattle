@@ -10,6 +10,10 @@ public class GameSetupController : MonoBehaviour
     }
     void CreatePlayer()
     {
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonPlayer"), Vector3.zero, Quaternion.identity);
+        int spawnPicker = Random.Range(0, GameSetup.GS.spawnPoints.Length);
+        //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"), Vector3.zero, Quaternion.identity);
+
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"),
+                GameSetup.GS.spawnPoints[spawnPicker].position, GameSetup.GS.spawnPoints[spawnPicker].rotation, 0);
     }
 }
