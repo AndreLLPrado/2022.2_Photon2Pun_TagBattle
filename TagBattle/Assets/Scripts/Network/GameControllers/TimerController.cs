@@ -28,6 +28,7 @@ public class TimerController : MonoBehaviourPunCallbacks, IPunObservable
     public bool resetTimer;
     public bool startTimer;
     public bool endTimer;
+    public bool panel;
 
     bool validValue;
 
@@ -72,7 +73,12 @@ public class TimerController : MonoBehaviourPunCallbacks, IPunObservable
         }
         else if (endTimer)
         {
-            gameOverPanel.SetActive(true);
+            if (PhotonNetwork.IsMasterClient)
+            {
+                panel = true;
+                PV.RPC("RPC_SendActiveBool", RpcTarget.Others, panel);
+            }
+            gameOverPanel.SetActive(panel);
 
             if (PhotonNetwork.IsMasterClient)
                 resetButton.SetActive(true);
@@ -109,9 +115,19 @@ public class TimerController : MonoBehaviourPunCallbacks, IPunObservable
         startButton.SetActive(true);
         stopButton.SetActive(false);
 
-        
-        gameOverPanel.SetActive(false);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            panel = false;
+            PV.RPC("RPC_SendActiveBool", RpcTarget.Others, panel);
+        }
+        gameOverPanel.SetActive(panel);
     }
+    [PunRPC]
+    public void RPC_SendActiveBool(bool panelIn)
+    {
+        panel = panelIn;
+    }
+    [PunRPC]
     public void RPC_SendTimer(float timeIn)
     {
         timer = timeIn;
