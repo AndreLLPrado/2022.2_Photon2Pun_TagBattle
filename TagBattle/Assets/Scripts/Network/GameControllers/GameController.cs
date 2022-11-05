@@ -15,6 +15,8 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
 
     [SerializeField]
     private bool captured;
+    [SerializeField]
+    private bool gameOver;
 
     private PhotonView PV;
 
@@ -39,13 +41,19 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
             if (PhotonNetwork.IsMasterClient)
             {
                 PV.RPC("RPC_SendCaptured", RpcTarget.Others, captured);
+                PV.RPC("RPC_SendGameOver", RpcTarget.Others, gameOver);
             }
         }
     }
 
     private void Update()
     {
-        if (timer.GetComponent<TimerController>().endTimer)
+        if (captured || timer.GetComponent<TimerController>().endTimer)
+        {
+            setGameOver(true);
+        }
+
+        if (timer.GetComponent<TimerController>().endTimer || gameOver)
         {
             gamerOver();
         }
@@ -67,10 +75,37 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
+    public void restarGame()
+    {
+        setCaptured(false);
+        setGameOver(false);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PV.RPC("RPC_SendCaptured", RpcTarget.Others, captured);
+            PV.RPC("RPC_SendGameOver", RpcTarget.Others, gameOver);
+        }
+    }
+
     [PunRPC]
     public void RPC_SendCaptured(bool capturedIn) 
     {
         captured = capturedIn;
+    }
+    [PunRPC]
+    public void RPC_SendGameOver(bool gameOverIn)
+    {
+        gameOver = gameOverIn;
+    }
+
+    public bool getGameOver()
+    {
+        return gameOver;
+    }
+    public void setGameOver(bool gmo)
+    {
+        if(PhotonNetwork.IsMasterClient)
+            PV.RPC("RPC_SendGameOver", RpcTarget.All, gmo);
+        gameOver = gmo;
     }
     public bool getCaptured()
     {
@@ -90,7 +125,6 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
         else
         {
             captured = (bool)stream.ReceiveNext();
-
         }
     }
 }

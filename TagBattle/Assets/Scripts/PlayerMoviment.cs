@@ -22,7 +22,7 @@ public class PlayerMoviment : MonoBehaviour
 
     void Update()
     {
-        if (view.IsMine)
+        if (view.IsMine && !GameController.GC.getGameOver())
         {
             MovePlayer();
         }

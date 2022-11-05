@@ -43,6 +43,10 @@ MonoBehaviour:
   - RPC_StartTimer
   - RPC_SendActiveBool
   - RPC_SendCaptured
+  - RPC_SendMyMode
+  - RPC_SendGameOver
+  - RPC_ForceSendGameOver
+  - RPC_SendRestartGame
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

@@ -29,6 +29,8 @@ public class TimerController : MonoBehaviourPunCallbacks, IPunObservable
     public bool startTimer;
     public bool endTimer;
     public bool panel;
+    [SerializeField]
+    private bool gmo;
 
     bool validValue;
 
@@ -62,6 +64,10 @@ public class TimerController : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Update()
     {
+        if (GameController.GC.getCaptured())
+        {
+            endTimer = true;
+        }
         TimerCoutDown();
 
     }
@@ -111,6 +117,10 @@ public class TimerController : MonoBehaviourPunCallbacks, IPunObservable
         endTimer = false;
         timer = aux;
         timerText.text = timer.ToString() + " s";
+        //GameController.GC.setCaptured(false);
+        //GameController.GC.setGameOver(false);
+        GameController.GC.restarGame();
+        
 
         startButton.SetActive(true);
         stopButton.SetActive(false);

@@ -8,5 +8,6 @@ public class RedPlayerSetup : MonoBehaviour
     {
         GetComponentInParent<PlayerMoviment>().speed = 6;
         GetComponentInParent<PlayerMode>().setMyMode(1);
+        GetComponentInParent<PlayerCollisions>().setPlayerMode(1);
     }
 }

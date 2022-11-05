@@ -5,13 +5,18 @@ using UnityEngine;
 
 public class PlayerCollisions : MonoBehaviourPunCallbacks
 {
+    [SerializeField]
     private int playerMode;
     private PhotonView PV;
 
     private void Start()
     {
-        playerMode = GetComponent<PlayerMode>().getMyMode();
         PV = GetComponent<PhotonView>();
+    }
+
+    public void setPlayerMode(int mode)
+    {
+        playerMode = mode;
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -29,6 +34,7 @@ public class PlayerCollisions : MonoBehaviourPunCallbacks
                     if(playerMode != otherPlayerMode)
                     {
                         Debug.Log("Red Win!");
+                        GameController.GC.setCaptured(true);
                     }
                 }
             }

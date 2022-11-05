@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerMode : MonoBehaviourPunCallbacks
 {
     [SerializeField]
-    private int myMode;//0 = no mode,1 = red, 2 = blue
+    public int myMode;//0 = no mode,1 = red, 2 = blue
 
     public int getMyMode()
     {

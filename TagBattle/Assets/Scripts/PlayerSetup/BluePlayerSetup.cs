@@ -8,5 +8,6 @@ public class BluePlayerSetup : MonoBehaviour
     {
         GetComponentInParent<PlayerMoviment>().speed = 5;
         GetComponentInParent<PlayerMode>().setMyMode(2);
+        GetComponentInParent<PlayerCollisions>().setPlayerMode(2);
     }
 }
