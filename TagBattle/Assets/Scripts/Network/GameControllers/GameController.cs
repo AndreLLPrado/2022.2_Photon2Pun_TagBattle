@@ -48,12 +48,12 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Update()
     {
-        if (captured || timer.GetComponent<TimerController>().endTimer)
+        if (captured)
         {
             setGameOver(true);
         }
 
-        if (timer.GetComponent<TimerController>().endTimer || gameOver)
+        if (gameOver)
         {
             gamerOver();
         }
@@ -103,8 +103,10 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
     }
     public void setGameOver(bool gmo)
     {
-        if(PhotonNetwork.IsMasterClient)
-            PV.RPC("RPC_SendGameOver", RpcTarget.All, gmo);
+        //if(PhotonNetwork.IsMasterClient)
+        //    PV.RPC("RPC_SendGameOver", RpcTarget.All, gmo);
+        //gameOver = gmo;
+
         gameOver = gmo;
     }
     public bool getCaptured()

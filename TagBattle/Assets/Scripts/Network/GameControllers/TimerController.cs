@@ -67,6 +67,7 @@ public class TimerController : MonoBehaviourPunCallbacks, IPunObservable
         if (GameController.GC.getCaptured())
         {
             endTimer = true;
+            //GameControllera.GC.setGameOver(true);
         }
         TimerCoutDown();
 
@@ -92,11 +93,13 @@ public class TimerController : MonoBehaviourPunCallbacks, IPunObservable
             {
                 resetButton.SetActive(false);
             }
+            //GameController.GC.restarGame();
         }
 
         if (timer <= 0)
         {
             endTimer = true;
+            GameController.GC.setGameOver(true);
         }
 
         if (Input.GetKeyDown(KeyCode.R) && PhotonNetwork.IsMasterClient)

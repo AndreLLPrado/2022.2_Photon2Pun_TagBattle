@@ -33,8 +33,9 @@ public class PlayerCollisions : MonoBehaviourPunCallbacks
                     Debug.Log("Valid Values");
                     if(playerMode != otherPlayerMode)
                     {
-                        Debug.Log("Red Win!");
+                        Debug.Log("Blue Win!");
                         GameController.GC.setCaptured(true);
+                        GameController.GC.setGameOver(true);
                     }
                 }
             }
