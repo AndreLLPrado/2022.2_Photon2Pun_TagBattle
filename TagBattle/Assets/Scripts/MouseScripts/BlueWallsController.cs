@@ -41,14 +41,11 @@ public class BlueWallsController : MonoBehaviourPunCallbacks, IPunObservable
         countDownAux = countDown;
         wallAngle = 0;
 
-        if (PhotonNetwork.IsMasterClient)
-        {
-            PV.RPC("RPC_SendCountdown", RpcTarget.Others, countDown);
-            PV.RPC("RPC_SendRedy", RpcTarget.Others, redyToCreate);
-        }
+        GameController.GC.setMaxWalls(numberOfWalls);
     }
     private void Update()
     {
+        GameController.GC.setWallCountingDown(countDown);
         if (PV.IsMine)
         {
             aimSystem();
@@ -120,6 +117,7 @@ public class BlueWallsController : MonoBehaviourPunCallbacks, IPunObservable
                 PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "BlueWall"), clickPos,
                     transform.rotation * Quaternion.Euler(new Vector3(0f, wallAngle, 0f)));
                 numberOfWalls--;
+                GameController.GC.addWallCount();
                 redyToCreate = false;
             }
         }

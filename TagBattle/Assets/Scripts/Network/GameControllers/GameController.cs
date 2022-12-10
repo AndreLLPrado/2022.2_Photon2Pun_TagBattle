@@ -18,6 +18,14 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField]
     private bool gameOver;
 
+    // Blue Player Mechenics
+    [SerializeField]
+    private int wallCount;
+    [SerializeField]
+    private int maxWalls;
+    [SerializeField]
+    private float wallCountingDown;
+
     private PhotonView PV;
 
     private void OnEnable()
@@ -36,6 +44,7 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
     private void Start()
     {
         PV = GetComponent<PhotonView>();
+        setWallCount(0);
         if (PhotonNetwork.IsMasterClient)
         {
             if (PhotonNetwork.IsMasterClient)
@@ -79,6 +88,7 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
     {
         setCaptured(false);
         setGameOver(false);
+        setWallCount(0);
         if (PhotonNetwork.IsMasterClient)
         {
             PV.RPC("RPC_SendCaptured", RpcTarget.Others, captured);
@@ -97,16 +107,47 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
         gameOver = gameOverIn;
     }
 
+    public void setMaxWalls(int maxWall)
+    {
+        this.maxWalls = maxWall;
+    }
+    public int getMaxWalls()
+    {
+        return maxWalls;
+    }
+
+    public void setWallCount(int wallCount)
+    {
+        this.wallCount = wallCount;
+    }
+    public int getWallCount()
+    {
+        return wallCount;
+    }
+    public void addWallCount()
+    {
+        this.wallCount++;
+    }
+    public void dropWallCount()
+    {
+        this.wallCount--;
+    }
+
+    public void setWallCountingDown(float wallCountingDown)
+    {
+        this.wallCountingDown = wallCountingDown;
+    }
+    public float getWallCountingDown()
+    {
+        return wallCountingDown;
+    }
+
     public bool getGameOver()
     {
         return gameOver;
     }
     public void setGameOver(bool gmo)
     {
-        //if(PhotonNetwork.IsMasterClient)
-        //    PV.RPC("RPC_SendGameOver", RpcTarget.All, gmo);
-        //gameOver = gmo;
-
         gameOver = gmo;
     }
     public bool getCaptured()
