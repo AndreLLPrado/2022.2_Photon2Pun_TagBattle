@@ -26,6 +26,10 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField]
     private float wallCountingDown;
 
+    // Red Player Mechenics
+    [SerializeField]
+    private float shootCountingDown;
+
     private PhotonView PV;
 
     private void OnEnable()
@@ -107,6 +111,14 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
         gameOver = gameOverIn;
     }
 
+    public void setShootCountingDown(float shootCountingDown)
+    {
+        this.shootCountingDown = shootCountingDown;
+    }
+    public float getShootCountingDown()
+    {
+        return shootCountingDown;
+    }
     public void setMaxWalls(int maxWall)
     {
         this.maxWalls = maxWall;
