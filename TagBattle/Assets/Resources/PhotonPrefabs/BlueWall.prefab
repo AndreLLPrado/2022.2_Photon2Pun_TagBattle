@@ -151,3 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8a417b004b82d540bf9b04026c8a079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 5
+  damageMat: {fileID: 2100000, guid: b040b2ea42e0ddf45a1d877378902cbd, type: 2}
+  normalMat: {fileID: 2100000, guid: 39da62ba8f0986740b393460e3749d02, type: 2}
+  lowHpMat: {fileID: 2100000, guid: f6805b6bd7685704bb1ba314db3bad90, type: 2}
