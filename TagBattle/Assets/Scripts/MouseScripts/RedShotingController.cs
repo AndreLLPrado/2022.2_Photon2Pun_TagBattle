@@ -71,11 +71,11 @@ public class RedShotingController : MonoBehaviourPunCallbacks, IPunObservable
                 ui_range.material = inRangeMaterial;
                 if (Input.GetMouseButtonDown(0))
                 {
-                    
+
                     Debug.Log("OBJ Tag: " + hit.transform.tag + " OBJ Name: " + hit.transform.name);
                     redyToCreate = false;
                 }
-                if(hit.collider.gameObject.layer == blueWall)
+                if (hit.collider.gameObject.layer == blueWall)
                 {
                     //Redy to Shoot
                     ui_range.material = redyToShoot;

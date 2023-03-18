@@ -14,5 +14,6 @@ public class RedDisplayController : MonoBehaviour
     private void Update()
     {
         shootingCountDown.text = GameController.GC.getShootCountingDown().ToString("F2");
+        shootingText.text = "Reloading!";
     }
 }

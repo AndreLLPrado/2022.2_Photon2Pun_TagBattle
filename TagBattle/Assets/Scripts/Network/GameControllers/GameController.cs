@@ -98,6 +98,11 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
             PV.RPC("RPC_SendCaptured", RpcTarget.Others, captured);
             PV.RPC("RPC_SendGameOver", RpcTarget.Others, gameOver);
         }
+        foreach(GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            int spawnPicker = Random.Range(0, GameSetup.GS.spawnPoints.Length);
+            player.transform.SetPositionAndRotation(GameSetup.GS.spawnPoints[spawnPicker].position, Quaternion.identity);
+        }
     }
 
     [PunRPC]
