@@ -9,7 +9,7 @@ public class RedPlayerSetup : MonoBehaviour
         GetComponentInParent<PlayerMoviment>().speed = 6;
         GetComponentInParent<PlayerCollisions>().setPlayerMode(1);
         GetComponentInParent<GenericAimSystem>().setPlayerMode(0);//0 - red, 1 - blue
-        GetComponentInParent<GenericAimSystem>().setRange(50);
-        GetComponentInParent<GenericAimSystem>().setCountDown(5);
+        GetComponentInParent<GenericAimSystem>().setRange(100);
+        GetComponentInParent<GenericAimSystem>().setCountDown(2.5f);
     }
 }

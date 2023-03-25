@@ -16,7 +16,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     private InputField playerNameInput;
 
     private string roomName;
-    private int roomSize;
+    private int roomSize = 2;
 
     private List<RoomInfo> roomListings;
     [SerializeField]

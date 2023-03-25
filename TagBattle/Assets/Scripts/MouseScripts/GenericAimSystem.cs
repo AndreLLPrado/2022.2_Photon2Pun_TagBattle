@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using System.IO;
 
 public class GenericAimSystem : MonoBehaviourPunCallbacks
 {
@@ -26,6 +27,20 @@ public class GenericAimSystem : MonoBehaviourPunCallbacks
     enum playerMode { red, blue}
     private playerMode PL;
 
+    //red logic
+    private bool readyShoot;
+
+    //blue logic
+    [SerializeField]
+    private GameObject wall;
+    [SerializeField]
+    private float wallAngle;
+    [SerializeField]
+    private int numberOfWalls;
+    private int numberOfWallsAxu;
+    [SerializeField]
+    private GameObject wallPointer;
+
     //UI
     private LineRenderer ui_range;
     [SerializeField]
@@ -35,17 +50,19 @@ public class GenericAimSystem : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+
         ui_range = GetComponent<LineRenderer>();
         PV = GetComponent<PhotonView>();
 
         ready = true;
         // countDownAux = countDown;
         Debug.Log("Player mode: " + PL.ToString());
+        wallPointer.SetActive(false);
     }
 
     private void Update()
     {
-        if (PV.IsMine)
+        if (PV.IsMine && !GameController.GC.getGameOver())
         {
             aimSystem();
         }
@@ -82,12 +99,52 @@ public class GenericAimSystem : MonoBehaviourPunCallbacks
         }
         else // Is blue player
         {
+            wallCreationSystem();
+        }
+    }
 
+    private void wallCreationSystem()
+    {
+        wallPointer.SetActive(true);
+        GameController.GC.setWallCountingDown(countDown);
+        wallPointer.transform.position = pointer.position;
+        wallPointer.transform.eulerAngles = new Vector3(0.0f, wallAngle, 0.0f);
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (wallAngle < 360)
+            {
+                wallAngle += 90;
+            }
+            else
+            {
+                wallAngle = 0;
+            }
+        }
+        if (ready)
+        {
+            GameController.GC.setWallCountingDown(countDown);
+            //mouse click
+            if (Input.GetMouseButtonDown(0))
+            {
+                if(inRange && numberOfWalls > 0)
+                {
+                    PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "BlueWall"), mouseCords,
+                    transform.rotation * Quaternion.Euler(new Vector3(0f, wallAngle, 0f)));
+                    numberOfWalls--;
+                    GameController.GC.addWallCount();
+                    ready = false;
+                }
+            }
+        }
+        else
+        {
+            StartCoutdown();
         }
     }
     private void shootingSystem() 
     {
         GameController.GC.setShootCountingDown(countDown);
+        GameController.GC.setReadyToShoot(ready);
         if (ready)
         {
             //mouse click
@@ -117,6 +174,16 @@ public class GenericAimSystem : MonoBehaviourPunCallbacks
             StartCoutdown();
         }
     }
+
+    public void restartCharacter()
+    {
+        ready = true;
+        countDown = countDownAux;
+        if(PL == playerMode.blue)
+        {
+            numberOfWalls = numberOfWallsAxu;
+        }
+    }
     private void StartCoutdown()
     {
         countDown -= Time.deltaTime;
@@ -128,6 +195,10 @@ public class GenericAimSystem : MonoBehaviourPunCallbacks
         }
     }
 
+    public void setNumbersOfWalls(int walls)
+    {
+        numberOfWalls = numberOfWallsAxu = walls;
+    }
     public void setCountDown(float c)
     {
         countDown = countDownAux = c;

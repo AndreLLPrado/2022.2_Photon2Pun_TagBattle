@@ -29,6 +29,7 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
     // Red Player Mechenics
     [SerializeField]
     private float shootCountingDown;
+    private bool readyToShoot;
 
     private PhotonView PV;
 
@@ -98,10 +99,10 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
             PV.RPC("RPC_SendCaptured", RpcTarget.Others, captured);
             PV.RPC("RPC_SendGameOver", RpcTarget.Others, gameOver);
         }
-        foreach(GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+        GameObject []players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject p in players)
         {
-            int spawnPicker = Random.Range(0, GameSetup.GS.spawnPoints.Length);
-            player.transform.SetPositionAndRotation(GameSetup.GS.spawnPoints[spawnPicker].position, Quaternion.identity);
+            p.GetComponent<GenericAimSystem>().restartCharacter();
         }
     }
 
@@ -116,6 +117,15 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
         gameOver = gameOverIn;
     }
 
+    public void setReadyToShoot(bool ready)
+    {
+        readyToShoot = ready;
+    }
+
+    public bool getReadyToShoot()
+    {
+        return readyToShoot;
+    }
     public void setShootCountingDown(float shootCountingDown)
     {
         this.shootCountingDown = shootCountingDown;

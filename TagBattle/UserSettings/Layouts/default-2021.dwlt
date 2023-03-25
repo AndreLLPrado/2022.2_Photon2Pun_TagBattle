@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1366
     height: 677
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Scene
   m_RootView: {fileID: 8}
   m_MinSize: {x: 875, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,8 +119,8 @@ MonoBehaviour:
     y: 0
     width: 253
     height: 627
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -145,8 +145,8 @@ MonoBehaviour:
     y: 0
     width: 256
     height: 242
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -171,8 +171,8 @@ MonoBehaviour:
     y: 502
     width: 1113
     height: 125
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -411,7 +411,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: fe6d0000
     m_LastClickedID: 28158
-    m_ExpandedIDs: 00000000465e0000485e00004a5e00004c5e00004e5e0000505e0000525e0000545e0000565e0000585e00005a5e00005c5e0000
+    m_ExpandedIDs: 000000004a5e00004c5e00004e5e0000505e0000525e0000545e0000565e0000585e00005a5e00005c5e00005e5e0000605e0000625e0000645e0000665e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -436,21 +436,21 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 335}
+    scrollPos: {x: 0, y: 420}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000465e0000485e00004a5e00004c5e00004e5e0000505e0000525e0000545e0000565e0000585e00005a5e00005c5e0000a65e0000a85e0000aa5e0000
+    m_ExpandedIDs: ffffffff000000004a5e00004c5e00004e5e0000505e0000525e0000545e0000565e0000585e00005a5e00005c5e00005e5e0000605e0000625e0000645e0000665e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: game
-      m_OriginalName: game
+      m_Name: RedPlayerSetup
+      m_OriginalName: RedPlayerSetup
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 24224
+      m_UserData: 5676
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -567,9 +567,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: a85e0000
       m_LastClickedID: 0
-      m_ExpandedIDs: 9e6fffffd676ffff207cffffd67dffff30fbffffcec20000
+      m_ExpandedIDs: f856ffff4659ffff4a5cffff9e5cffff525effff605effff885effff925effff6066ffffb466ffff6c68ffff7e68ffffaa68ffffb868ffff906fffffc277ffff1c81ffff5a82ffff7283ffff6486ffffdcc3ffffacccffffd8d3ffff30fbffff74a900001eaa00005cbe000046d30000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -818,9 +818,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 396.3095, y: 305.09497, z: -5.447499}
+    m_Target: {x: 357.4719, y: 297.77716, z: 2.4283462}
     speed: 2
-    m_Value: {x: 396.3095, y: 305.09497, z: -5.447499}
+    m_Value: {x: 363.4506, y: 291.5342, z: 2.278052}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -851,7 +851,7 @@ MonoBehaviour:
       m_Fade:
         m_Target: 0
         speed: 2
-        m_Value: 0
+        m_Value: 1
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
@@ -869,11 +869,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0, y: 0, z: 0, w: 1}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0, w: 1}
+    m_Value: {x: -1.3234025e-10, y: 0.00000025794293, z: -0.000000110674584, w: -1}
   m_Size:
-    m_Target: 336.65793
+    m_Target: 318.95584
     speed: 2
-    m_Value: 336.65793
+    m_Value: 333.98517
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -891,8 +891,8 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.0015181454, y: 0.9978687, z: -0.06025426, w: -0.025151128}
-  m_LastSceneViewOrtho: 0
+  m_LastSceneViewRotation: {x: -0.00047149305, y: 0.918982, z: -0.3943041, w: -0.0011022427}
+  m_LastSceneViewOrtho: 1
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
   m_SceneVisActive: 1
