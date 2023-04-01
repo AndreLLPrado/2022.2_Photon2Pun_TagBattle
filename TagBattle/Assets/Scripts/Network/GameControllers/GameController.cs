@@ -31,6 +31,10 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
     private float shootCountingDown;
     private bool readyToShoot;
 
+    // UI controls
+    [SerializeField]
+    private GameObject gameConfigPanel;
+
     private PhotonView PV;
 
     private void OnEnable()
@@ -104,6 +108,25 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
         {
             p.GetComponent<GenericAimSystem>().restartCharacter();
         }
+    }
+
+    public void disableGameConfigPanel()
+    {
+        if(PhotonNetwork.IsMasterClient)
+        {
+            gameConfigPanel.SetActive(false);
+        }
+        else
+        {
+            PV.RPC("RPC_disableGameConfigPanel", RpcTarget.Others);
+            PV.RPC("RPC_SendGameOver", RpcTarget.Others, gameOver);
+        }
+    }
+
+    [PunRPC]
+    private void RPC_disableGameConfigPanel()
+    {
+        gameObject.SetActive(false);
     }
 
     [PunRPC]

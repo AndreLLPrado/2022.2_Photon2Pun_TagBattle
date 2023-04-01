@@ -44,8 +44,8 @@ public class TimerController : MonoBehaviourPunCallbacks, IPunObservable
 
         if (PhotonNetwork.IsMasterClient)
         {
-            InputButton.SetActive(true);
-            startButton.SetActive(true);
+            InputButton.SetActive(false);//trocar para true para debug
+            startButton.SetActive(false);//trocar para true para debug
             stopButton.SetActive(false);
         }
         else
@@ -125,7 +125,7 @@ public class TimerController : MonoBehaviourPunCallbacks, IPunObservable
         GameController.GC.restarGame();
         
 
-        startButton.SetActive(true);
+        startButton.SetActive(false);//trocar para true para debug
         stopButton.SetActive(false);
 
         if (PhotonNetwork.IsMasterClient)
@@ -133,6 +133,7 @@ public class TimerController : MonoBehaviourPunCallbacks, IPunObservable
             panel = false;
             PV.RPC("RPC_SendActiveBool", RpcTarget.Others, panel);
         }
+        StartClick();
         gameOverPanel.SetActive(panel);
     }
     [PunRPC]
@@ -191,7 +192,7 @@ public class TimerController : MonoBehaviourPunCallbacks, IPunObservable
         if (PhotonNetwork.IsMasterClient)
         {
             startButton.SetActive(false);
-            stopButton.SetActive(true);
+            stopButton.SetActive(false);//trocar para true para debug
         }
         else
         {
@@ -204,7 +205,7 @@ public class TimerController : MonoBehaviourPunCallbacks, IPunObservable
         startTimer = false;
         if (PhotonNetwork.IsMasterClient)
         {
-            startButton.SetActive(true);
+            startButton.SetActive(false);//trocar para true para debug
             stopButton.SetActive(false);
         }
         else

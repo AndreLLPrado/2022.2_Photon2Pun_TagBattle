@@ -49,6 +49,7 @@ MonoBehaviour:
   - RPC_SendRestartGame
   - RPC_SendCountdown
   - RPC_SendRedy
+  - RPC_disableGameConfigPanel
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
