@@ -58,6 +58,16 @@ public class PlayerMoviment : MonoBehaviour
 
         move.y -= grativy * Time.deltaTime;
 
+        // RotationPlayer();
         cc.Move(move * Time.deltaTime);
+    }
+
+    private void RotationPlayer()
+    {
+        float horizontalAxis = Input.GetAxisRaw("Horizontal");
+        float verticalAxis = Input.GetAxisRaw("Vertical");
+        float rotation = (horizontalAxis + verticalAxis) * 45f;
+
+        transform.eulerAngles = new Vector3(0.0f, rotation, 0.0f);
     }
 }

@@ -807,6 +807,7 @@ MonoBehaviour:
   allCharacters:
   - {fileID: 1864797995393634234, guid: 9eaa326f035372342ab6461c65f88fd8, type: 3}
   - {fileID: 1864797995393634234, guid: 7b682a66d773f8a49a95b1cd5ac84d7b, type: 3}
+  - {fileID: 1771018440863407680, guid: 547823a493df21848a562fc315bd55aa, type: 3}
 --- !u!4 &361153742
 Transform:
   m_ObjectHideFlags: 0
@@ -1563,7 +1564,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
