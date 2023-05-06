@@ -39,7 +39,7 @@ public class TimerController : MonoBehaviourPunCallbacks, IPunObservable
     private void Start()
     {
         PV = GetComponent<PhotonView>();
-        setTimer(10);
+        setTimer(60);
         timerText.text = timer.ToString() + " s";
 
         if (PhotonNetwork.IsMasterClient)

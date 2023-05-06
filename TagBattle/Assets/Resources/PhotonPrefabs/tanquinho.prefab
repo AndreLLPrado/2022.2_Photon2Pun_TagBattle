@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4084615387977686470}
   - component: {fileID: 5434935422503549463}
   - component: {fileID: 3339165818729969628}
+  - component: {fileID: 589965444427090474}
   m_Layer: 0
   m_Name: tanquinho
   m_TagString: Untagged
@@ -72,6 +73,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe90d931d35ab747b694d566e4bb901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &589965444427090474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771018440863407680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 0
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7286296447806809753
 GameObject:
   m_ObjectHideFlags: 0
