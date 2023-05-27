@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 1010030373602562108}
   - component: {fileID: 3533458019947819606}
   - component: {fileID: 6980081707519476405}
-  - component: {fileID: 4835333508983397991}
   - component: {fileID: 882841365628839206}
+  - component: {fileID: 4835333508983397991}
+  - component: {fileID: 1417096353705301803}
   m_Layer: 0
   m_Name: blueHover
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,19 +61,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe90d931d35ab747b694d566e4bb901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &4835333508983397991
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 382676128854166150}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.042258, y: 2.4300747, z: 3.9580035}
-  m_Center: {x: 0.012119293, y: 1.2119279, z: 0.056022882}
 --- !u!114 &882841365628839206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +77,32 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!65 &4835333508983397991
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382676128854166150}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.042258, y: 2.4300747, z: 3.9580035}
+  m_Center: {x: 0.012119293, y: 1.2119279, z: 0.056022882}
+--- !u!114 &1417096353705301803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382676128854166150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bcbc0cdd7b7c84397d1336f39dae15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMode: 2
 --- !u!1 &8701590037222699615
 GameObject:
   m_ObjectHideFlags: 0

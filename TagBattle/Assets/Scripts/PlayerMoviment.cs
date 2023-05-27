@@ -9,22 +9,33 @@ public class PlayerMoviment : MonoBehaviour
     Vector3 move;
     PhotonView view;
 
+    private Rigidbody rb;
+
     public float speed;
     public float grativy;
 
     bool posRes = false;
 
+    // Debug
+    private BoxCollider boxCollider;
+    private Vector3 colliderSize;
+
     private void Start()
     {
         cc = GetComponent<CharacterController>();
         view = GetComponent<PhotonView>();
+        rb = GetComponent<Rigidbody>();
+
+        boxCollider = GetComponent<BoxCollider>();
+        colliderSize = boxCollider.size;
     }
 
     void Update()
     {
         if (view.IsMine && !GameController.GC.getGameOver())
         {
-            MovePlayer();
+            // MovePlayer();
+            MovePlayerByPhysics();
         }
     }
 
@@ -47,6 +58,16 @@ public class PlayerMoviment : MonoBehaviour
         transform.position = new Vector3(0f, 10f, 0f);
         cc.enabled = true;
     }
+
+    private void MovePlayerByPhysics()
+    {
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+
+        Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical) * speed;
+
+        rb.velocity = movement;
+    }
     private void MovePlayer()
     {
         if (cc.isGrounded)
@@ -58,16 +79,6 @@ public class PlayerMoviment : MonoBehaviour
 
         move.y -= grativy * Time.deltaTime;
 
-        // RotationPlayer();
         cc.Move(move * Time.deltaTime);
-    }
-
-    private void RotationPlayer()
-    {
-        float horizontalAxis = Input.GetAxisRaw("Horizontal");
-        float verticalAxis = Input.GetAxisRaw("Vertical");
-        float rotation = (horizontalAxis + verticalAxis) * 45f;
-
-        transform.eulerAngles = new Vector3(0.0f, rotation, 0.0f);
     }
 }

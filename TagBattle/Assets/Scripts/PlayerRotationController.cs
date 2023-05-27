@@ -24,12 +24,16 @@ public class PlayerRotationController : MonoBehaviourPunCallbacks
     {
         float horizontalAxis = Input.GetAxisRaw("Horizontal");
         float verticalAxis = Input.GetAxisRaw("Vertical");
-        float rotation = Mathf.Atan2(horizontalAxis, verticalAxis) * Mathf.Rad2Deg;
+        // float rotation = Mathf.Atan2(horizontalAxis, verticalAxis) * Mathf.Rad2Deg;
 
-        targetRotation = new Vector3(0.0f, rotation, 0.0f);
+        if (horizontalAxis != 0f || verticalAxis != 0f) {
+            float rotation = Mathf.Atan2(horizontalAxis, verticalAxis) * Mathf.Rad2Deg;
+            targetRotation = new Vector3(0f, rotation, 0f);
+        }
+
+        // targetRotation = new Vector3(0.0f, rotation, 0.0f);
         transform.eulerAngles = targetRotation;
     }
-
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting) // enviar a rotação do jogador para outros jogadores

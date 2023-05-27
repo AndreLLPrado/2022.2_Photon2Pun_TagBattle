@@ -48,6 +48,9 @@ public class GenericAimSystem : MonoBehaviourPunCallbacks
     [SerializeField]
     private Material inRangeMaterial;
 
+    //Physics
+    private Rigidbody rb;
+
     private void Start()
     {
 
@@ -58,6 +61,8 @@ public class GenericAimSystem : MonoBehaviourPunCallbacks
         // countDownAux = countDown;
         Debug.Log("Player mode: " + PL.ToString());
         wallPointer.SetActive(false);
+        rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     private void Update()
@@ -74,6 +79,7 @@ public class GenericAimSystem : MonoBehaviourPunCallbacks
         mouseCords.y = 1f;
 
         pointer.transform.position = mouseCords;
+        pointer.transform.rotation = Quaternion.identity;
         ui_range.SetPosition(0, new Vector3(transform.position.x, 1.0f, transform.position.z));
         ui_range.SetPosition(1, mouseCords);
 
