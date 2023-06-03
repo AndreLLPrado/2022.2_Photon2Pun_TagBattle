@@ -13,6 +13,7 @@ public class BluePlayerSetup : MonoBehaviour
         GetComponentInParent<GenericAimSystem>().setRange(50);
         GetComponentInParent<GenericAimSystem>().setCountDown(5);
         GetComponentInParent<GenericAimSystem>().setNumbersOfWalls(2);
+        GetComponentInParent<CollisionController>().setPlayerMode("blue");
         GameController.GC.setMaxWalls(2);
     }
 }

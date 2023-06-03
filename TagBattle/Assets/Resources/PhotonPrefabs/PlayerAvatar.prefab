@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7764009089715798894}
   - component: {fileID: 2539845495412853554}
   - component: {fileID: 7724261702918867043}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bluePointer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8808444474364472555}
   - component: {fileID: 3012674205186246504}
   - component: {fileID: 4989915536731183494}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,13 +182,14 @@ GameObject:
   - component: {fileID: 9201591298397634244}
   - component: {fileID: 3355831381540196040}
   - component: {fileID: 6832142886063176148}
+  - component: {fileID: 3840200936403341379}
   - component: {fileID: 630665259512593097}
   - component: {fileID: 7342966461456460777}
   - component: {fileID: 8991725287546245119}
   - component: {fileID: 8813542585899756086}
   - component: {fileID: 4383379808150484443}
   - component: {fileID: 3324235725953532115}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerAvatar
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -323,6 +324,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMode: 0
+--- !u!114 &3840200936403341379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6068628217141274209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 764395c256e26b24ba7b75e6d4fedd43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layer:
+    serializedVersion: 2
+    m_Bits: 128
+  sphereRadius: 2
+  drawSphereCast: 1
+  sphereOffset: {x: 0, y: 0, z: 0}
+  sphereCenter: {x: 0, y: 0, z: 0}
+  corectionZ: -10
+  corectionY: 1
+  playerMode: 0
 --- !u!114 &630665259512593097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,7 +533,7 @@ GameObject:
   - component: {fileID: 4960677121244216904}
   - component: {fileID: 5874522020943232270}
   - component: {fileID: 3586671064159079258}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}

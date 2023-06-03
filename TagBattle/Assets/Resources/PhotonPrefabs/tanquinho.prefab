@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3339165818729969628}
   - component: {fileID: 589965444427090474}
   - component: {fileID: 1259020697252406231}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: tanquinho
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 1992859867582903714}
   - component: {fileID: 3710719948197924072}
   - component: {fileID: 169617264594135164}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}

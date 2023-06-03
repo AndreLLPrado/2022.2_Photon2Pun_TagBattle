@@ -11,5 +11,6 @@ public class RedPlayerSetup : MonoBehaviour
         GetComponentInParent<GenericAimSystem>().setPlayerMode(0);//0 - red, 1 - blue
         GetComponentInParent<GenericAimSystem>().setRange(100);
         GetComponentInParent<GenericAimSystem>().setCountDown(2.5f);
+        GetComponentInParent<CollisionController>().setPlayerMode("red");
     }
 }
