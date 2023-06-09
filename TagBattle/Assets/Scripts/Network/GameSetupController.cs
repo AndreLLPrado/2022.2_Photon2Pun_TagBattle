@@ -16,4 +16,12 @@ public class GameSetupController : MonoBehaviour
         PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"),
                 GameSetup.GS.spawnPoints[spawnPicker].position, GameSetup.GS.spawnPoints[spawnPicker].rotation, 0);
     }
+    public void RepositionPlayer(Transform player)
+    {
+        int spawnPicker = Random.Range(0, GameSetup.GS.spawnPoints.Length);
+        Transform spawnPoint = GameSetup.GS.spawnPoints[spawnPicker];
+
+        player.transform.position = spawnPoint.position;
+        player.transform.rotation = spawnPoint.rotation;
+    }
 }

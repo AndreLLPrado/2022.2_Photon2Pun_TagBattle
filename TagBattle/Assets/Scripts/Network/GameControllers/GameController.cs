@@ -102,11 +102,22 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
         {
             PV.RPC("RPC_SendCaptured", RpcTarget.Others, captured);
             PV.RPC("RPC_SendGameOver", RpcTarget.Others, gameOver);
-        }
-        GameObject []players = GameObject.FindGameObjectsWithTag("Player");
-        foreach(GameObject p in players)
-        {
-            p.GetComponent<GenericAimSystem>().restartCharacter();
+       
+            GameObject []players = GameObject.FindGameObjectsWithTag("Player");
+            foreach(GameObject p in players)
+            {
+                GenericAimSystem aimSystem = p.GetComponent<GenericAimSystem>();
+                if (aimSystem != null)
+                {
+                    aimSystem.restartCharacter();
+                    GameObject.Find("GameSetupController").GetComponent<GameSetupController>().RepositionPlayer(p.transform);
+                }
+                //string currentSceneName = SceneManager.GetActiveScene().name;
+
+                //// Carrega novamente a cena atual
+                //SceneManager.LoadScene(currentSceneName);
+            }
+            // PhotonNetwork.LoadLevel(1);
         }
     }
 

@@ -339,7 +339,7 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 128
-  sphereRadius: 2
+  sphereRadius: 2.5
   drawSphereCast: 1
   sphereOffset: {x: 0, y: 0, z: 0}
   sphereCenter: {x: 0, y: 0, z: 0}

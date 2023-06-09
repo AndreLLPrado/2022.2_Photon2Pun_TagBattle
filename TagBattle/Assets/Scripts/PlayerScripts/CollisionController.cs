@@ -34,7 +34,10 @@ public class CollisionController : MonoBehaviourPunCallbacks
             {
                 Debug.Log(hit.transform.gameObject.name);
                 //win coditions
-                string otherPlayerMode = hit.transform.gameObject.GetComponent<CollisionController>().GetPlayerMode();
+                string otherPlayerMode = "";
+                if (hit.transform.gameObject.GetComponent<CollisionController>() != null) {
+                    otherPlayerMode = hit.transform.gameObject.GetComponent<CollisionController>().GetPlayerMode();
+                }
                 if(playerMode == PlayerMode.red)
                 {
                     if (otherPlayerMode == "red")
