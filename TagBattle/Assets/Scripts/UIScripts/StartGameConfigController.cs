@@ -20,7 +20,7 @@ public class StartGameConfigController : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             title.text = "Game configuration";
-            GameController.GC.setGameOver(true);
+            // GameController.GC.setGameOver(true);
         }
         else
         {
@@ -40,10 +40,7 @@ public class StartGameConfigController : MonoBehaviourPunCallbacks
 
     public void closeConfig()
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            GameController.GC.disableGameConfigPanel();
-            GameController.GC.setGameOver(false);
-        }
+        GameController.GC.disableGameConfigPanel();
+        Debug.LogWarning("entrou aqui!");
     }
 }

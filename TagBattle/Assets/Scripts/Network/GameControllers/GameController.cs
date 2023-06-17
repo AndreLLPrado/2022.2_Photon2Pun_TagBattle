@@ -34,6 +34,8 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
     // UI controls
     [SerializeField]
     private GameObject gameConfigPanel;
+    [SerializeField]
+    private bool activeConfigPanel;
 
     private PhotonView PV;
 
@@ -58,6 +60,10 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (PhotonNetwork.IsMasterClient)
             {
+                setGameOver(true);
+                setActiveConfigPanel(true);
+                gameConfigPanel.SetActive(activeConfigPanel);
+
                 PV.RPC("RPC_SendCaptured", RpcTarget.Others, captured);
                 PV.RPC("RPC_SendGameOver", RpcTarget.Others, gameOver);
             }
@@ -112,12 +118,7 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
                     aimSystem.restartCharacter();
                     GameObject.Find("GameSetupController").GetComponent<GameSetupController>().RepositionPlayer(p.transform);
                 }
-                //string currentSceneName = SceneManager.GetActiveScene().name;
-
-                //// Carrega novamente a cena atual
-                //SceneManager.LoadScene(currentSceneName);
             }
-            // PhotonNetwork.LoadLevel(1);
         }
     }
 
@@ -125,19 +126,21 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
     {
         if(PhotonNetwork.IsMasterClient)
         {
-            gameConfigPanel.SetActive(false);
+            setActiveConfigPanel(false);
+            gameConfigPanel.SetActive(activeConfigPanel);
+            setGameOver(false);
         }
         else
         {
-            PV.RPC("RPC_disableGameConfigPanel", RpcTarget.Others);
+            PV.RPC("RPC_disableGameConfigPanel", RpcTarget.Others, activeConfigPanel);
             PV.RPC("RPC_SendGameOver", RpcTarget.Others, gameOver);
         }
     }
 
     [PunRPC]
-    private void RPC_disableGameConfigPanel()
+    private void RPC_disableGameConfigPanel(bool active)
     {
-        gameObject.SetActive(false);
+        gameConfigPanel.SetActive(active);
     }
 
     [PunRPC]
@@ -218,6 +221,14 @@ public class GameController : MonoBehaviourPunCallbacks, IPunObservable
     public void setCaptured(bool cap)
     {
         captured = cap;
+    }
+    public void setActiveConfigPanel(bool active)
+    {
+        activeConfigPanel = active;
+    }
+    public bool getActiveConfigPanel()
+    {
+        return activeConfigPanel;
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

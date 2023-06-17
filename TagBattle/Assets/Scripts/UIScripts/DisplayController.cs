@@ -25,11 +25,11 @@ public class DisplayController : MonoBehaviourPunCallbacks
 
         myMode = PlayerPrefs.GetInt("MyCharacter");
         Debug.Log(PhotonNetwork.NickName + ": My mode is: " + myMode.ToString());
-        if (myMode == 0)//Blue
+        if (myMode == 3)//Blue
         {
             BlueDisplayController();
         }
-        else if (myMode == 1)//Red
+        else if (myMode == 2)//Red
         {
             RedDisplayController();
         }

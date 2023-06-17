@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using System;
 
-public class BluePlayerWall : MonoBehaviour
+public class BluePlayerWall : MonoBehaviourPunCallbacks, IPunObservable
 {
     private PhotonView PV;
 
@@ -77,6 +77,17 @@ public class BluePlayerWall : MonoBehaviour
         {
             yield return new WaitForSeconds(.125f);
             renderer.material = lowHpMat;
+        }
+    }
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(hp);
+        }
+        else
+        {
+            hp = (int)stream.ReceiveNext();
         }
     }
 }
